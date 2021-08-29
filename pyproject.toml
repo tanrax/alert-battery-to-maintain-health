@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "alert-battery-to-maintain-health"
-version = "0.1.0"
-description = ""
+version = "1.0.0"
+description = "Alerts you if your battery is overcharged or discharged to extend its performance and health."
 authors = ["Andros Fenollosa <andros@fenollosa.email>"]
 
 [tool.poetry.dependencies]
