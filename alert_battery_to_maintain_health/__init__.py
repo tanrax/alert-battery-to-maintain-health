@@ -13,6 +13,11 @@ LIMIT_BELOW_BATTERY = 15
 MESSAGE_LIMIT_BELOW_BATTERY = "Connect your charger"
 FILE_NAME_TEMP = "alert_battery_to_maintain_health"
 PATH_FILE_NAME_TEMP = os.path.join(gettempdir(), FILE_NAME_TEMP)
+NOTIFICATION = Notify(
+  default_notification_title="Alert battery",
+  default_application_name="Alert battery",
+  default_notification_icon=os.path.abspath("alert_battery_to_maintain_health/icons/battery-status.png"),
+)
 
 
 def get_sensor_battery():
@@ -22,10 +27,9 @@ def get_sensor_battery():
 
 def send_notification(message, title="Battery"):
     """Send native notification"""
-    notification = Notify()
-    notification.title = title
-    notification.message = message
-    notification.send()
+    NOTIFICATION.title = title
+    NOTIFICATION.message = message
+    NOTIFICATION.send()
 
 
 def create_file_block():
