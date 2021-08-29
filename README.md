@@ -1,6 +1,16 @@
+Alerts you if your battery is overcharged or discharged to extend its performance and health.
+
+Cross-platform compatibility:
+- Windows.
+- MacOS.
+- Linux.
+- FreeBSD.
+
 # Install
 
 ```bash
+git clone git@github.com:tanrax/alert-battery-to-maintain-health.git
+cd alert-battery-to-maintain-health
 poetry install
 ```
 
