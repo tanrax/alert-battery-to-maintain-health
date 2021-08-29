@@ -10,6 +10,12 @@ Cross-platform compatibility:
 - Linux.
 - FreeBSD.
 
+# Preview
+
+<p align="center">
+    <img src="media/demo.png" width="500"> 
+</p>
+
 # Install
 
 ```bash
@@ -27,5 +33,11 @@ poetry run python3 alert_battery_to_maintain_health/__init__.py
 # Cron
 
 ```bash
-poetry run python3 alert_battery_to_maintain_health/__init__.py
+crontab -e
+```
+
+Add the following:
+
+```bash
+* * * * * cd [absolute path folder] && poetry run python3 alert_battery_to_maintain_health/__init__.py
 ```
