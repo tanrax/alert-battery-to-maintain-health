@@ -1,21 +1,66 @@
-__version__ = '0.1.0'
+__version__ = '1.0.0'
 
+# Dependencies
+import os
+from tempfile import gettempdir
 from notifypy import Notify
 import psutil
 
+# Variables
+LIMIT_ABOVE_BATTERY = 85
+MESSAGE_LIMIT_ABOVE_BATTERY = "Disconnect your charger"
+LIMIT_BELOW_BATTERY = 15
+MESSAGE_LIMIT_BELOW_BATTERY = "Connect your charger"
+FILE_NAME_TEMP = "alert_battery_to_maintain_health"
+PATH_FILE_NAME_TEMP = os.path.join(gettempdir(), FILE_NAME_TEMP)
+
+
+def get_sensor_battery():
+    """Get object data sensor battery"""
+    return psutil.sensors_battery()
+
+
+def send_notification(message, title="Battery"):
+    """Send native notification"""
+    notification = Notify()
+    notification.title = title
+    notification.message = message
+    notification.send()
+
+
+def create_file_block():
+    """Make temp file not repeat notification"""
+    open(PATH_FILE_NAME_TEMP, 'w').close()
+
+
+def get_battery_percent():
+    """Gets the percentage of battery charge"""
+    return int(get_sensor_battery().percent)
+
+
+def is_plugged():
+    """It tells you if it is charging or not."""
+    return get_sensor_battery().power_plugged
+
+
 if __name__ == '__main__':
-    # Variables
-    battery = psutil.sensors_battery()
 
-    if battery:
-        notification = Notify()
-        notification.title = "Cool Title"
-        notification.message = "Even cooler message."
-        notification.send()
+    # Is battery
+    if get_sensor_battery() :
 
-        print(battery)
-        plugged = battery.power_plugged
-        percent = str(battery.percent)
-        plugged = "Plugged In" if plugged else "Not Plugged In"
-        print(percent+'% | '+plugged)
+        # It has not been previously warned
+        if not os.path.exists(PATH_FILE_NAME_TEMP):
 
+            # Below
+            if LIMIT_BELOW_BATTERY > get_battery_percent() and not is_plugged():
+                send_notification(MESSAGE_LIMIT_BELOW_BATTERY)
+                create_file_block()
+
+            # Above
+            if LIMIT_ABOVE_BATTERY < get_battery_percent() and is_plugged():
+                send_notification(MESSAGE_LIMIT_ABOVE_BATTERY)
+                create_file_block()
+
+        # Unlock to warned
+        elif LIMIT_BELOW_BATTERY < get_battery_percent() < LIMIT_ABOVE_BATTERY:
+            os.remove(PATH_FILE_NAME_TEMP)
