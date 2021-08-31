@@ -16,7 +16,7 @@ PATH_FILE_NAME_TEMP = os.path.join(gettempdir(), FILE_NAME_TEMP)
 NOTIFICATION = Notify(
   default_notification_title="Alert battery",
   default_application_name="Alert battery",
-  default_notification_icon=os.path.abspath("alert_battery_to_maintain_health/icons/battery-status.png"),
+  default_notification_icon=os.path.abspath("icons/battery-status.png"),
 )
 
 

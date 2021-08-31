@@ -27,7 +27,7 @@ poetry install
 # Run
 
 ```bash
-poetry run python3 alert_battery_to_maintain_health/__init__.py
+poetry run python3 src
 ```
 
 # Cron
@@ -39,5 +39,5 @@ crontab -e
 Add the following:
 
 ```bash
-* * * * * cd [absolute path folder] && poetry run python3 alert_battery_to_maintain_health/__init__.py
+* * * * * 'cd [absolute path folder] && poetry run python3 src'
 ```
