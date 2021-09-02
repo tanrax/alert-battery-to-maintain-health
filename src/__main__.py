@@ -13,10 +13,11 @@ LIMIT_BELOW_BATTERY = 15
 MESSAGE_LIMIT_BELOW_BATTERY = "Connect your charger"
 FILE_NAME_TEMP = "alert_battery_to_maintain_health"
 PATH_FILE_NAME_TEMP = os.path.join(gettempdir(), FILE_NAME_TEMP)
+NOTIFICATION_PATH_ICON = os.path.abspath(os.path.join(__file__, "..", ".." ,"icons/battery-status.png"))
 NOTIFICATION = Notify(
-  default_notification_title="Alert battery",
-  default_application_name="Alert battery",
-  default_notification_icon=os.path.abspath("icons/battery-status.png"),
+    default_notification_title="Alert battery",
+    default_application_name="Alert battery",
+    default_notification_icon=NOTIFICATION_PATH_ICON,
 )
 
 
