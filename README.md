@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="alert_battery_to_maintain_health/icons/battery-status.png" width="200"> 
+    <img src="icons/battery-status.png" width="200"> 
 </p>
 
 Alerts you if your battery is overcharged or discharged to extend its performance and health.
