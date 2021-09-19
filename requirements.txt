@@ -1,2 +1,0 @@
-notify-py==0.3.3
-psutil==5.8.0

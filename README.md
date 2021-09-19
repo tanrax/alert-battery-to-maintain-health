@@ -2,13 +2,9 @@
     <img src="icons/battery-status.png" width="200"> 
 </p>
 
-Alerts you if your battery is overcharged or discharged to extend its performance and health.
+Alerts you if your battery is overcharged 🌹 or discharged 🥀 to extend its performance and health.
 
-Cross-platform compatibility:
-- Windows.
-- MacOS.
-- Linux.
-- FreeBSD.
+**Only Linux**: Want more compatible systems? I look forward to your pull requests to add more notification systems. Check line 25 in `src/__main__.py`.
 
 # Preview
 

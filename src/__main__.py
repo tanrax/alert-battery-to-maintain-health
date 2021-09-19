@@ -22,8 +22,7 @@ def get_sensor_battery():
 
 def send_notification(message, title="🔋Battery🔋"):
     """Send native notification"""
-    os.system(f"echo '{title}: {message}' > /dev/pts/0" 
-)
+    os.system(f"echo '{title}: {message}' > /dev/pts/0")
 
 
 def create_file_block():
