@@ -8,17 +8,11 @@ import psutil
 
 # Variables
 LIMIT_ABOVE_BATTERY = 85
-MESSAGE_LIMIT_ABOVE_BATTERY = "Disconnect your charger"
+MESSAGE_LIMIT_ABOVE_BATTERY = "Disconnect your charger, has enough 🌹"
 LIMIT_BELOW_BATTERY = 15
-MESSAGE_LIMIT_BELOW_BATTERY = "Connect your charger"
+MESSAGE_LIMIT_BELOW_BATTERY = "Connect your charger, needs energy 🥀"
 FILE_NAME_TEMP = "alert_battery_to_maintain_health"
 PATH_FILE_NAME_TEMP = os.path.join(gettempdir(), FILE_NAME_TEMP)
-NOTIFICATION_PATH_ICON = os.path.abspath(os.path.join(__file__, "..", ".." ,"icons/battery-status.png"))
-NOTIFICATION = Notify(
-    default_notification_title="Alert battery",
-    default_application_name="Alert battery",
-    default_notification_icon=NOTIFICATION_PATH_ICON,
-)
 
 
 def get_sensor_battery():
@@ -26,11 +20,10 @@ def get_sensor_battery():
     return psutil.sensors_battery()
 
 
-def send_notification(message, title="Battery"):
+def send_notification(message, title="🔋Battery🔋"):
     """Send native notification"""
-    NOTIFICATION.title = title
-    NOTIFICATION.message = message
-    NOTIFICATION.send()
+    os.system(f"echo '{title}: {message}' > /dev/pts/0" 
+)
 
 
 def create_file_block():
